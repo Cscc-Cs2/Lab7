@@ -1,6 +1,9 @@
 package edu.cscc;
 import java.util.Random;
 
+/**
+ * This class holds some methods used when running a game of RPSLS
+ */
 public class RPSLSpock {
 
     static Random rand = new Random(System.currentTimeMillis());
@@ -12,12 +15,10 @@ public class RPSLSpock {
     public static final String SPOCK = "spock";
 
     /**
-     *
+     * Returns true if the inserted string is a valid pick in a game of RPSLS
      * @param pick
      * @return boolean
      */
-
-
     public static boolean isValidPick(String pick) {
         if (pick == null) {
             return false;
@@ -30,6 +31,10 @@ public class RPSLSpock {
                 SPOCK.equalsIgnoreCase(pick));
     }
 
+    /**
+     * picks an option at random for the computer
+     * @return a randomly selected option for the computer to use
+     */
     public static String generatePick() {
         String pick = null;
         switch (rand.nextInt(5)) {
@@ -52,6 +57,12 @@ public class RPSLSpock {
         return pick;
     }
 
+    /**
+     * determine who won the game, the computer or the human
+     * @param c_pick
+     * @param h_pick
+     * @return true if the computer beat the human
+     */
     public static boolean isComputerWin(String c_pick,String h_pick) {
         h_pick = h_pick.toLowerCase();
         return ((ROCK.equals(c_pick) && (SCISSORS.equals(h_pick) || LIZARD.equals(h_pick))) ||
